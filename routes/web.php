@@ -17,4 +17,14 @@ Route::get('/', function () {
     return Redirect::guest('login');
 });
 
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
 
+Route::middleware(['auth:sanctum', 'verified'])->get('/colaboradores', function () {
+    return view('colaboradores');
+})->name('colaboradores');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/consultar', function () {
+    return view('consultar');
+})->name('consultar');
