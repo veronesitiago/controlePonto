@@ -3,18 +3,20 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
+use App\Models\Ponto;
+use Illuminate\Support\Facades\Auth;
 
 class RegistroPonto extends Component
 {
-    public $message;
-
     public function render()
     {
         return view('livewire.registro-ponto');
     }
 
-    public function registrar()
+    public function store()
     {
-        $this->message = 'registrado';
+        $ponto = new Ponto;
+        $ponto->id_colaborador = Auth::user()->id;
+        session()->flash('message', 'Ponto registrado com sucesso.');
     }
 }
