@@ -28,10 +28,10 @@ class BuscaCepService
 
     private function normalizaDados($dadosCep)
     {
-        if (!($dadosCep instanceof stdClass) || (isset($dadosCep->response->status) && $dadosCep->response->status == 'ERROR')) {
+        if ((isset($dadosCep->erro) && $dadosCep->erro == 'true')) {
             return 'cep não encontrado...';    
         }
-
+        
         $endereco = \property_exists($dadosCep, 'logradouro') ? $dadosCep->logradouro : '';
         $endereco .= \property_exists($dadosCep, 'bairro') ? ', ' . $dadosCep->bairro: '';
         $endereco .= \property_exists($dadosCep, 'localidade') ? ' - ' . $dadosCep->localidade: '';
