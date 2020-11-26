@@ -17,6 +17,7 @@ class RegistroPonto extends Component
     {
         $ponto = new Ponto;
         $ponto->id_colaborador = Auth::user()->id;
+        $ponto->save();
         session()->flash('message', 'Ponto registrado com sucesso.');
     }
 }
