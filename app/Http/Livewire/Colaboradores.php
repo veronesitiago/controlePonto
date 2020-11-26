@@ -10,11 +10,11 @@ use App\Services\BuscaCepService;
 class Colaboradores extends Component
 {
 
-    public $colaboradores, $name, $data_nascimento, $cpf, $nivel, $cargo, $email, 
+    public $colaboradores, $name, $data_nascimento, $cpf, $nivel, $cargo, $email,
     $cep, $endereco, $password, $password_confirmation, $user_id;
     public $isOpen = false;
-    
-    
+
+
     protected $rules = [
             'name' => 'required|max:255',
             'cargo' => 'required|max:255',
@@ -24,7 +24,7 @@ class Colaboradores extends Component
             'nivel' => 'required|max:1',
             'password' => 'required',
     ];
-    
+
     public function updated($propertyName)
     {
         $this->validateOnly($propertyName);
@@ -41,21 +41,21 @@ class Colaboradores extends Component
 
     private function resetInputFields()
     {
-        $this->name = ''; 
-        $this->data_nascimento = ''; 
-        $this->cpf = ''; 
-        $this->cargo = ''; 
-        $this->nivel = ''; 
-        $this->email = ''; 
-        $this->cep = ''; 
-        $this->endereco = ''; 
-        $this->password = ''; 
+        $this->name = '';
+        $this->data_nascimento = '';
+        $this->cpf = '';
+        $this->cargo = '';
+        $this->nivel = '';
+        $this->email = '';
+        $this->cep = '';
+        $this->endereco = '';
+        $this->password = '';
         $this->password_confirmation = '';
         $this->user_id = '';
     }
 
     public function create()
-    {   
+    {
         $this->resetInputFields();
         $this->openModal();
     }
@@ -76,9 +76,9 @@ class Colaboradores extends Component
             'password' => Hash::make($this->password),
         ]);
 
-        session()->flash('message', 
+        session()->flash('message',
             $this->user_id ? 'Registro atualizado com sucesso.' : 'Registro cadastrado com sucesso.');
-   
+
         $this->closeModal();
         $this->resetInputFields();
     }
@@ -87,7 +87,7 @@ class Colaboradores extends Component
     {
         $this->isOpen = true;
     }
-  
+
     public function closeModal()
     {
         $this->isOpen = false;
@@ -97,21 +97,21 @@ class Colaboradores extends Component
     {
         $usuario = User::findOrFail($id);
         $this->user_id = $id;
-        $this->name = $usuario->name; 
-        $this->data_nascimento = $usuario->data_nascimento; 
-        $this->cpf = $usuario->cpf; 
-        $this->cargo = $usuario->cargo; 
-        $this->nivel = $usuario->nivel; 
-        $this->email = $usuario->email; 
-        $this->cep = $usuario->cep; 
+        $this->name = $usuario->name;
+        $this->data_nascimento = $usuario->data_nascimento;
+        $this->cpf = $usuario->cpf;
+        $this->cargo = $usuario->cargo;
+        $this->nivel = $usuario->nivel;
+        $this->email = $usuario->email;
+        $this->cep = $usuario->cep;
         $this->endereco = $usuario->endereco;
-     
+
         $this->openModal();
     }
 
     public function delete($id)
     {
-        Todo::find($id)->delete();
+        User::find($id)->delete();
         session()->flash('message', 'Colaborador deletado com sucesso.');
     }
 }
