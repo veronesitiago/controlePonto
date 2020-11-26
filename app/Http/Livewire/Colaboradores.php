@@ -34,9 +34,9 @@ class Colaboradores extends Component
     {
         $this->colaboradores = User::all();
 
-        return view('livewire.colaboradores', [
-            'endereco' => $buscaCep->buscaCep($this->cep)
-        ]);
+        $this->endereco = $buscaCep->buscaCep($this->cep);
+
+        return view('livewire.colaboradores');
     }
 
     private function resetInputFields()
