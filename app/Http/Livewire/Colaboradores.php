@@ -64,6 +64,11 @@ class Colaboradores extends Component
     {
         $this->validate();
 
+        if (!$this->validarCPF($this->cpf)) {
+            $this->addError('cpf', 'o CPF deve ser válido');
+            return;
+        }
+
         User::updateOrCreate(['id' => $this->user_id], [
             'name' => $this->name,
             'data_nascimento' => $this->data_nascimento,
@@ -77,7 +82,7 @@ class Colaboradores extends Component
         ]);
 
         session()->flash('message',
-            $this->user_id ? 'Registro atualizado com sucesso.' : 'Registro cadastrado com sucesso.');
+            $this->user_id ? 'Usuário atualizado com sucesso.' : 'Registro cadastrado com sucesso.');
 
         $this->closeModal();
         $this->resetInputFields();
@@ -98,7 +103,7 @@ class Colaboradores extends Component
         $usuario = User::findOrFail($id);
         $this->user_id = $id;
         $this->name = $usuario->name;
-        $this->data_nascimento = $usuario->data_nascimento;
+        $this->data_nascimento = \date_format(new \Datetime($usuario->data_nascimento), 'Y-m-d');
         $this->cpf = $usuario->cpf;
         $this->cargo = $usuario->cargo;
         $this->nivel = $usuario->nivel;
@@ -113,5 +118,30 @@ class Colaboradores extends Component
     {
         User::find($id)->delete();
         session()->flash('message', 'Colaborador deletado com sucesso.');
+    }
+
+    public function validarCPF($validar)
+    {
+
+        $cpf = preg_replace( '/[^0-9]/is', '', $validar );
+
+        if (strlen($cpf) != 11) {
+            return false;
+        }
+
+        if (preg_match('/(\d)\1{10}/', $cpf)) {
+            return false;
+        }
+
+        for ($t = 9; $t < 11; $t++) {
+            for ($d = 0, $c = 0; $c < $t; $c++) {
+                $d += $cpf[$c] * (($t + 1) - $c);
+            }
+            $d = ((10 * $d) % 11) % 10;
+            if ($cpf[$c] != $d) {
+                return false;
+            }
+        }
+        return true;
     }
 }
