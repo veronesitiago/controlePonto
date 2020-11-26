@@ -18,7 +18,7 @@
                                 id="name" placeholder="Digite o nome" wire:model="name" required autofocus autocomplete="name">
                             @error('name') <span class="text-red-500">{{ $message }}</span>@enderror
                         </div>
-                        
+
                         <div class="mb-4">
                             <label for="data_nascimento"
                                 class="block text-gray-700 text-sm font-bold mb-2">Data de Nascimento:</label>
@@ -36,11 +36,11 @@
                                 id="cpf" placeholder="Digite o CPF" wire:model="cpf" pattern="\d{3}\.?\d{3}\.?\d{3}-?\d{2}" tittle="Digite um CPF no formato: xxx.xxx.xxx-xx" autofocus>
                             @error('cpf') <span class="text-red-500">{{ $message }}</span>@enderror
                         </div>
-                        
+
                         <div class="mb-4">
                             <label for="cargo"
                                 class="block text-gray-700 text-sm font-bold mb-2">Nível:</label>
-                                <select name="nivel" wire:model="nivel" 
+                                <select name="nivel" wire:model="nivel"
                                     class="p-2 px-4 py-2 pr-8 leading-tight bg-white border border-gray-400 rounded shadow appearance-none hover:border-gray-500 focus:outline-none focus:shadow-outline">
                                     <option value=''>Selecione o nível de acesso</option>
                                         <option value="1">Gestor</option>
@@ -57,7 +57,7 @@
                                 id="cargo" placeholder="Digite o cargo" wire:model="cargo" required autofocus autocomplete="cargo">
                             @error('cargo') <span class="text-red-500">{{ $message }}</span>@enderror
                         </div>
-                        
+
                         <div class="mb-4">
                             <label for="email"
                                 class="block text-gray-700 text-sm font-bold mb-2">Email:</label>
@@ -66,7 +66,7 @@
                                 id="email" placeholder="Digite o email" wire:model="email">
                             @error('email') <span class="text-red-500">{{ $message }}</span>@enderror
                         </div>
-                        
+
                         <div class="mb-4">
                             <label for="cep"
                                 class="block text-gray-700 text-sm font-bold mb-2">Cep:</label>
@@ -84,7 +84,7 @@
                                 id="endereco" name="endereco" value="{{ $endereco }}" required>
                             @error('endereco') <span class="text-red-500">{{ $message }}</span>@enderror
                         </div>
-                        
+
                         <div class="mb-4">
                             <label for="password"
                                 class="block text-gray-700 text-sm font-bold mb-2">Senha:</label>
@@ -93,7 +93,7 @@
                                 id="password" placeholder="Digite a senha" wire:model="password">
                             @error('password') <span class="text-red-500">{{ $message }}</span>@enderror
                         </div>
-                        
+
                         <div class="mb-4">
                             <label for="password_confirmation"
                                 class="block text-gray-700 text-sm font-bold mb-2">Confirme a Senha:</label>

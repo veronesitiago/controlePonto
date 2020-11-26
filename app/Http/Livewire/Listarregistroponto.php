@@ -33,8 +33,8 @@ class Listarregistroponto extends Component
                   FROM mov_pontos
             INNER JOIN users
                     ON mov_pontos.id_colaborador = users.id
-                 WHERE mov_pontos.created_at >= '$this->data_inicio'
-                   AND mov_pontos.created_at <= '$this->data_fim'; ";
+                 WHERE mov_pontos.created_at >= '$this->data_inicio 00:00:00'
+                   AND mov_pontos.created_at <= '$this->data_fim 23:59:59'; ";
         $dados = DB::select($sql);
         return !empty($dados) ? $dados: [];
     }
