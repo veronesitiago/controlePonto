@@ -108,4 +108,10 @@ class Colaboradores extends Component
      
         $this->openModal();
     }
+
+    public function delete($id)
+    {
+        Todo::find($id)->delete();
+        session()->flash('message', 'Colaborador deletado com sucesso.');
+    }
 }
