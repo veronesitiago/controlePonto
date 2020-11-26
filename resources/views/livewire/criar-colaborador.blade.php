@@ -32,11 +32,23 @@
                             <label for="cpf"
                                 class="block text-gray-700 text-sm font-bold mb-2">CPF:</label>
                             <input type="text"
-                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                id="cpf" placeholder="Digite o CPF" wire:model="cpf" pattern="\d{3}\.?\d{3}\.?\d{3}-?\d{2}" tittle="Digite um CPF no formato: xxx.xxx.xxx-xx">
+                                class="shadow appearance-none border rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                id="cpf" placeholder="Digite o CPF" wire:model="cpf" pattern="\d{3}\.?\d{3}\.?\d{3}-?\d{2}" tittle="Digite um CPF no formato: xxx.xxx.xxx-xx" autofocus>
                             @error('cpf') <span class="text-red-500">{{ $message }}</span>@enderror
                         </div>
                         
+                        <div class="mb-4">
+                            <label for="cargo"
+                                class="block text-gray-700 text-sm font-bold mb-2">Nível:</label>
+                                <select name="nivel" wire:model="nivel" 
+                                    class="p-2 px-4 py-2 pr-8 leading-tight bg-white border border-gray-400 rounded shadow appearance-none hover:border-gray-500 focus:outline-none focus:shadow-outline">
+                                    <option value=''>Selecione o nível de acesso</option>
+                                        <option value="1">Gestor</option>
+                                        <option value="2">Colaborador</option>
+                                </select>
+                                @error('cargo') <span class="text-red-500">{{ $message }}</span>@enderror
+                        </div>
+
                         <div class="mb-4">
                             <label for="cargo"
                                 class="block text-gray-700 text-sm font-bold mb-2">Cargo:</label>
@@ -58,9 +70,9 @@
                         <div class="mb-4">
                             <label for="cep"
                                 class="block text-gray-700 text-sm font-bold mb-2">Cep:</label>
-                            <input type="number"
+                            <input type="text"
                                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                id="cep" placeholder="Digite o cep" wire:model="cep" maxlength="8">
+                                id="cep" placeholder="Digite o cep" wire:model="cep" maxlength="8" pattern="\d{8}" tittle="Digite somente números">
                             @error('cep') <span class="text-red-500">{{ $message }}</span>@enderror
                         </div>
 

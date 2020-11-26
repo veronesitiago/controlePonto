@@ -31,15 +31,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($colaboradores as $todo)
+                    @foreach($colaboradores as $colaborador)
                     <tr>
-                        <td class="border px-4 py-2">{{ $todo->id }}</td>
-                        <td class="border px-4 py-2">{{ $todo->name }}</td>
-                        <td class="border px-4 py-2">{{ $todo->cargo}}</td>
+                        <td class="border px-4 py-2">{{ $colaborador->id }}</td>
+                        <td class="border px-4 py-2">{{ $colaborador->name }}</td>
+                        <td class="border px-4 py-2">{{ $colaborador->cargo}}</td>
                         <td class="border px-4 py-2">
-                            <button wire:click="edit({{ $todo->id }})"
+                            <button wire:click="edit({{ $colaborador->id }})"
                                 class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Editar</button>
-                            <button wire:click="delete({{ $todo->id }})"
+                            <button wire:click="delete({{ $colaborador->id }})"
                                 class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Excluir</button>
                         </td>
                     </tr>

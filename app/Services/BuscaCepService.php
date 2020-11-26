@@ -36,7 +36,7 @@ class BuscaCepService
         $endereco .= \property_exists($dadosCep, 'bairro') ? ', ' . $dadosCep->bairro: '';
         $endereco .= \property_exists($dadosCep, 'localidade') ? ' - ' . $dadosCep->localidade: '';
         $endereco .= \property_exists($dadosCep, 'uf') ? '/' . $dadosCep->uf: '';
-        
+
         return $endereco;
         
     }
