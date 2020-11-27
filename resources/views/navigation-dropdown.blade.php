@@ -9,27 +9,30 @@
                         <x-jet-application-mark class="block h-9 w-auto" />
                     </a>
                 </div>
+                @if(Auth::user()->nivel == 2)
+                    <!-- Navigation Links -->
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                            {{ __('Registrar') }}
+                        </x-jet-nav-link>
+                    </div>
+                @endif
 
-                <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Registrar') }}
-                    </x-jet-nav-link>
-                </div>
+                @if(Auth::user()->nivel == 1)
+                    <!-- Navigation Links -->
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-jet-nav-link href="{{ route('consultar') }}" :active="request()->routeIs('consultar')">
+                            {{ __('Consultar') }}
+                        </x-jet-nav-link>
+                    </div>
 
-                <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('consultar') }}" :active="request()->routeIs('consultar')">
-                        {{ __('Consultar') }}
-                    </x-jet-nav-link>
-                </div>
-
-                <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('colaboradores') }}" :active="request()->routeIs('colaboradores')">
-                        {{ __('Colaboradores') }}
-                    </x-jet-nav-link>
-                </div>
+                    <!-- Navigation Links -->
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-jet-nav-link href="{{ route('colaboradores') }}" :active="request()->routeIs('colaboradores')">
+                            {{ __('Colaboradores') }}
+                        </x-jet-nav-link>
+                    </div>
+                @endif
             </div>
 
             <!-- Settings Dropdown -->
