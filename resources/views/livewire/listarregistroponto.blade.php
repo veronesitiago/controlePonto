@@ -43,17 +43,19 @@
                             <th class="px-4 py-2">Nome</th>
                             <th class="px-4 py-2">Cargo</th>
                             <th class="px-4 py-2">Idade</th>
+                            <th class="px-4 py-2">Nome Gestor</th>
                             <th class="px-4 py-2">Registro</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($registros as $registro)
                             <tr>
-                                <td class="border px-4 py-2">{{ $registro->id }}</td>
-                                <td class="border px-4 py-2">{{ $registro->name }}</td>
-                                <td class="border px-4 py-2">{{ $registro->cargo}}</td>
-                                <td class="border px-4 py-2">{{ $registro->Idade}}</td>
-                                <td class="border px-4 py-2">{{ $registro->data_registro}}</td>
+                                <td class="border px-4 py-2">{{ $registro['id'] }}</td>
+                                <td class="border px-4 py-2">{{ $registro['name'] }}</td>
+                                <td class="border px-4 py-2">{{ $registro['cargo']}}</td>
+                                <td class="border px-4 py-2">{{ $registro['idade']}}</td>
+                                <td class="border px-4 py-2">{{ $registro['NomeGestor']}}</td>
+                                <td class="border px-4 py-2">{{ $registro['data_registro']}}</td>
                             </tr>
                         @endforeach
                     </tbody>

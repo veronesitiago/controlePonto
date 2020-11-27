@@ -6,12 +6,13 @@ use Livewire\Component;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use App\Services\BuscaCepService;
+use Illuminate\Support\Facades\Auth;
 
 class Colaboradores extends Component
 {
 
     public $colaboradores, $name, $data_nascimento, $cpf, $nivel, $cargo, $email,
-    $cep, $endereco, $password, $password_confirmation, $user_id;
+    $cep, $endereco, $password, $password_confirmation, $user_id, $id_gestor;
     public $isOpen = false;
 
 
@@ -51,6 +52,7 @@ class Colaboradores extends Component
         $this->endereco = '';
         $this->password = '';
         $this->password_confirmation = '';
+        $this->id_gestor = null;
         $this->user_id = '';
     }
 
@@ -69,6 +71,10 @@ class Colaboradores extends Component
             return;
         }
 
+        if (!($this->user_id) && ($this->nivel > 1)) {
+            $this->id_gestor = Auth::user()->id;
+        }
+
         User::updateOrCreate(['id' => $this->user_id], [
             'name' => $this->name,
             'data_nascimento' => $this->data_nascimento,
@@ -78,6 +84,7 @@ class Colaboradores extends Component
             'cep' => $this->cep,
             'endereco' => $this->endereco,
             'nivel' => $this->nivel,
+            'id_gestor' => $this->id_gestor,
             'password' => Hash::make($this->password),
         ]);
 

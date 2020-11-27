@@ -36,6 +36,7 @@ class User extends Authenticatable
         'password',
         'data_nascimento',
         'nivel',
+        'id_gestor',
     ];
 
     /**
