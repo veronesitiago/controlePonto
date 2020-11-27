@@ -27,6 +27,7 @@
                         <th class="px-4 py-2 w-20">Id</th>
                         <th class="px-4 py-2">Nome</th>
                         <th class="px-4 py-2">Cargo</th>
+                        <th class="px-4 py-2">Nível</th>
                         <th class="px-4 py-2">Ação</th>
                     </tr>
                 </thead>
@@ -36,6 +37,7 @@
                         <td class="border px-4 py-2">{{ $colaborador->id }}</td>
                         <td class="border px-4 py-2">{{ $colaborador->name }}</td>
                         <td class="border px-4 py-2">{{ $colaborador->cargo}}</td>
+                        <td class="border px-4 py-2">{{ ($colaborador->nivel) == 1 ? 'Gestor': 'Colaborador' }}</td>
                         <td class="border px-4 py-2">
                             <button wire:click="edit({{ $colaborador->id }})"
                                 class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Editar</button>
