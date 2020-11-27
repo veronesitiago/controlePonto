@@ -33,3 +33,17 @@ Estará disponível em: http://127.0.0.1:8000/
     <li>Listar, Remover, Cadastrar e Editar Funcionários</li>
     <li>Listar todos os registros de pontos dos funcionários</li>
 </ol>
+
+## Dados para testes
+
+<p>Usuário Gestor</p>
+<ol>
+    <li>login: adm@gmail.com</li>
+    <li>password: aaa123456</li>
+</ol>
+
+<p>Usuário colaborador</p>
+<ol>
+    <li>login: eh@gmail.com</li>
+    <li>password: aaa123</li>
+</ol>
